@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Property;
+use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
 use ProxyManager\ProxyGenerator\Util\Properties;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -53,8 +54,13 @@ class AdminPropertyController extends AbstractController
     
      public function edit(Property $property)
     {
+        $form = $this->createForm(PropertyType::class, $property);
+        return $this->render('admin/property/edit.html.twig', [
 
-        return $this->render('admin/property/edit.html.twig', compact('property'));
+            'property' => $property,
+            'form' => $form->createView()
+
+        ]);
 
 
     }
