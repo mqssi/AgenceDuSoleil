@@ -8,6 +8,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\OptionsResolver\Options;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -51,6 +52,20 @@ class PropertyRepository extends ServiceEntityRepository
             $query = $query
                 ->andWhere('p.surface >= :minsurface')
                 ->setParameter('minsurface', $search->getMinSurface());
+
+        }
+
+        if($search->getOptions()->count()>0)
+        {
+            $k = 0;
+            foreach($search->getOptions()as $option)
+            {
+                $k++;
+                $query = $query
+                ->andWhere(":option$k MEMBER OF p.options")
+                ->setParameter("option$k", $option);
+
+            }
 
         }
 
