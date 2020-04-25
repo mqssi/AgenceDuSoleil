@@ -49,7 +49,9 @@ class AdminPropertyController extends AbstractController
      public function index()
     {
 
-        $properties = $this->repository->findAll();
+        $properties = $this->repository
+        ->findBy(array(), array('id' => 'desc'));
+    
         return $this->render('admin/property/index.html.twig', compact('properties'));
 
     }

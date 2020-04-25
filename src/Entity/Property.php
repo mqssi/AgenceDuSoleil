@@ -16,6 +16,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
  * @UniqueEntity("title")
  * @Vich\Uploadable()
+ * 
  */
 class Property
 {

@@ -22,7 +22,9 @@
 
     {% endfor %}
 
-
+    <div class="text-right">
+        <a href="{{path('admin.property.new')}}" class="btn btn-primary"> Créer un nouveau bien</a>
+    </div>
 
             <table class="table table-striped">
             <thead>
@@ -32,7 +34,12 @@
 
             </tr>
             </thead>
+            
+
+
+
             <tbody>
+                
                 {%  for property in properties   %}
                 <tr>
                     <td>
@@ -60,9 +67,7 @@
             </table>
 
 
-            <div class="text-right">
-                <a href="{{path('admin.property.new')}}" class="btn btn-primary"> Créer un nouveau bien</a>
-            </div>
+
 
 </div>
 
