@@ -9,7 +9,7 @@
     </head>
     <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning " style="font-weight: bold;">
   <a class="navbar-brand" href="{{ path('home') }}">Agence du Soleil</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,17 +20,40 @@
       <li class="nav-item">
         <a class="nav-link  {% if current_menu is defined and current_menu == 'properties' %} active{% endif %}" href="{{ path('property.index') }} ">Acheter <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link  {% if current_menu is defined and current_menu == 'docs' %} active{% endif %}" href="{{ path('docu.index') }} ">Documentation <span class="sr-only">(current)</span></a>
+      </li>
+
+
+
     </ul>
 
+    
+
+    
 
     {% if app.user %}
 
     <ul class="navbar-nav">
 
+
+      <li class="nav-item">
+        <a class="nav-link {% if current_menu is defined and current_menu == 'adm' %} active{% endif %}"  href="{{ path('admin.property.index') }}" > Panel Admin</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link {% if current_menu is defined and current_menu == 'options' %} active{% endif %}"  href="{{ path('admin.option.index') }}" > Gérer options</a>
+      </li>
+
+      
       <li class="nav-item ">
 
         <a href="{{ path('logout') }}" class="nav-link"> Se déconnecter</a>
       </li>
+
+ 
+    
+
 
     </ul>
       {% else %}
@@ -39,7 +62,7 @@
 
         <li class="nav-item">
   
-          <a href="{{ path('login') }}" class="nav-link"> Se connecter</a>
+          <a class="nav-link {% if current_menu is defined and current_menu == 'log' %} active{% endif %}"  href="{{ path('login') }}" > Se connecter</a>
         </li>
   
       </ul>

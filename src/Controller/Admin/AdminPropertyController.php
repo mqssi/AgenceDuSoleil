@@ -51,12 +51,14 @@ class AdminPropertyController extends AbstractController
 
         $properties = $this->repository
         ->findBy(array(), array('id' => 'desc'));
-    
-        return $this->render('admin/property/index.html.twig', compact('properties'));
+        
+        $current_menu = 'adm';
+
+        return $this->render('admin/property/index.html.twig', compact('properties', 'current_menu'));
 
     }
 
-
+//compact('properties')
     /**
      * @Route ("/admin/property/create", name="admin.property.new")
      */
